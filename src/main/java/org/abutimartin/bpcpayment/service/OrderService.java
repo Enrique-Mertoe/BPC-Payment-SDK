@@ -28,8 +28,13 @@ public class OrderService {
         formData.put("returnUrl", returnUrl);
         formData.put("userName", config.getUsername());
         formData.put("password", config.getPassword());
+        
+        // Add optional parameters
         if (config.getClientId() != null) {
             formData.put("clientId", config.getClientId());
+        }
+        if (config.getMerchantLogin() != null) {
+            formData.put("merchantLogin", config.getMerchantLogin());
         }
         
         return httpClient.postForm("/rest/register.do", formData, OrderRegistrationResponse.class);
@@ -44,6 +49,14 @@ public class OrderService {
         formData.put("returnUrl", returnUrl);
         formData.put("userName", config.getUsername());
         formData.put("password", config.getPassword());
+        
+        // Add optional parameters
+        if (config.getClientId() != null) {
+            formData.put("clientId", config.getClientId());
+        }
+        if (config.getMerchantLogin() != null) {
+            formData.put("merchantLogin", config.getMerchantLogin());
+        }
         
         return httpClient.postForm("/rest/registerPreAuth.do", formData, OrderRegistrationResponse.class);
     }

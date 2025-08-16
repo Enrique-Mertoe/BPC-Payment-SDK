@@ -4,29 +4,29 @@ public class TestCards {
     
     public static final class SuccessCards {
         public static final TestCard VISA_3DS2_FULL = new TestCard(
-            "5555555555555599", "123", "1234", "3DS2 Full Success", 
+            "5555555555555599", "123", "203412", "3DS2 Full Success", 
             AuthorizationType.THREE_DS2, ResultType.SUCCESS, FlowType.FULL
         );
         
         public static final TestCard VISA_3DS2_FRICTIONLESS = new TestCard(
-            "4111111111111111", "123", "1226", "3DS2 Frictionless Success",
+            "4111111111111111", "123", "202612", "3DS2 Frictionless Success",
             AuthorizationType.THREE_DS2, ResultType.SUCCESS, FlowType.FRICTIONLESS
         );
         
         public static final TestCard VISA_3DS2_ATTEMPT = new TestCard(
-            "4000001111111118", "123", "1230", "3DS2 Attempt Success",
+            "4000001111111118", "123", "203012", "3DS2 Attempt Success",
             AuthorizationType.THREE_DS2_ATTEMPT, ResultType.SUCCESS, FlowType.FRICTIONLESS
         );
         
         public static final TestCard VISA_SSL = new TestCard(
-            "4444555511113333", "123", "1226", "SSL Success",
+            "4444555511113333", "123", "202612", "SSL Success",
             AuthorizationType.SSL, ResultType.SUCCESS, FlowType.FRICTIONLESS
         );
     }
     
     public static final class FailureCards {
         public static final TestCard MASTERCARD_3DS2_FAILURE = new TestCard(
-            "5168494895055780", "123", "1226", "3DS2 Failure",
+            "5168494895055780", "123", "202612", "3DS2 Failure",
             AuthorizationType.THREE_DS2, ResultType.FAILURE, FlowType.FRICTIONLESS
         );
     }
@@ -54,7 +54,7 @@ public class TestCards {
         public String getPan() { return pan; }
         public String getCvc() { return cvc; }
         public String getExpiry() { return expiry; }
-        public String getExpiryFormatted() { return "20" + expiry; }
+        public String getExpiryFormatted() { return expiry; } // Already in YYYYMM format
         public String getDescription() { return description; }
         public AuthorizationType getAuthType() { return authType; }
         public ResultType getExpectedResult() { return expectedResult; }

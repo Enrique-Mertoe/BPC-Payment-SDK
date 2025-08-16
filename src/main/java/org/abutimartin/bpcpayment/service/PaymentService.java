@@ -51,6 +51,12 @@ public class PaymentService {
         formData.put("backUrl", backUrl);
         formData.put("failUrl", failUrl);
         
+        // Add common optional parameters that might be required
+        if (config.getClientId() != null) {
+            formData.put("clientId", config.getClientId());
+        }
+        formData.put("ip", "127.0.0.1"); // Default IP for testing
+        
         return httpClient.postForm("/rest/instantPayment.do", formData, PaymentResponse.class);
     }
     

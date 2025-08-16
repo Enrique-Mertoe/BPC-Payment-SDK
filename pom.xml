@@ -87,6 +87,14 @@
             <version>5.8.0</version>
             <scope>test</scope>
         </dependency>
+        
+        <!-- Logging Implementation for Tests -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.4.14</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
