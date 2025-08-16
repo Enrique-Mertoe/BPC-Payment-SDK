@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: bomapay-spring-boot-example
+  
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+
+bomapay:
+  username: ${BOMAPAY_USERNAME:test_user}
+  password: ${BOMAPAY_PASSWORD:test_user_password}
+  client-id: ${BOMAPAY_CLIENT_ID:259753456}
+  merchant-login: ${BOMAPAY_MERCHANT_LOGIN:OurBestMerchantLogin}
+  base-url: ${BOMAPAY_BASE_URL:https://dev.bpcbt.com/payment}
+  currency: ${BOMAPAY_CURRENCY:978}
+  language: ${BOMAPAY_LANGUAGE:en}
+  timeout: ${BOMAPAY_TIMEOUT:30000}
+
+logging:
+  level:
+    org.abutimartin.bpcpayment: DEBUG
+    okhttp3: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"

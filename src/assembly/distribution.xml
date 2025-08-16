@@ -1,0 +1,78 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.2.0 
+                              https://maven.apache.org/xsd/assembly-2.2.0.xsd">
+    <id>distribution</id>
+    <formats>
+        <format>zip</format>
+        <format>tar.gz</format>
+    </formats>
+    <includeBaseDirectory>true</includeBaseDirectory>
+    <baseDirectory>bomapay-sdk-${project.version}</baseDirectory>
+    
+    <fileSets>
+        <!-- Main JAR -->
+        <fileSet>
+            <directory>${project.build.directory}</directory>
+            <outputDirectory>lib</outputDirectory>
+            <includes>
+                <include>${project.artifactId}-${project.version}.jar</include>
+                <include>${project.artifactId}-${project.version}-sources.jar</include>
+                <include>${project.artifactId}-${project.version}-javadoc.jar</include>
+            </includes>
+        </fileSet>
+        
+        <!-- Documentation -->
+        <fileSet>
+            <directory>${project.basedir}</directory>
+            <outputDirectory>docs</outputDirectory>
+            <includes>
+                <include>README.md</include>
+                <include>CHANGELOG.md</include>
+                <include>LICENSE</include>
+            </includes>
+        </fileSet>
+        
+        <!-- Examples -->
+        <fileSet>
+            <directory>${project.basedir}/examples</directory>
+            <outputDirectory>examples</outputDirectory>
+            <excludes>
+                <exclude>**/target/**</exclude>
+                <exclude>**/.idea/**</exclude>
+                <exclude>**/*.iml</exclude>
+            </excludes>
+        </fileSet>
+        
+        <!-- Test utilities -->
+        <fileSet>
+            <directory>${project.basedir}/src/main/java/org/abutimartin/bpcpayment/test</directory>
+            <outputDirectory>test-utils</outputDirectory>
+        </fileSet>
+    </fileSets>
+    
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>lib/dependencies</outputDirectory>
+            <scope>runtime</scope>
+            <excludes>
+                <exclude>*:*:*:*:test</exclude>
+            </excludes>
+        </dependencySet>
+    </dependencySets>
+    
+    <files>
+        <!-- POM file -->
+        <file>
+            <source>${project.basedir}/pom.xml</source>
+            <outputDirectory>.</outputDirectory>
+        </file>
+        
+        <!-- Installation guide -->
+        <file>
+            <source>${project.basedir}/INSTALL.md</source>
+            <outputDirectory>docs</outputDirectory>
+            <filtered>true</filtered>
+        </file>
+    </files>
+</assembly>
